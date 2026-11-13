@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>רשימת קניות</title>
+  <meta name="theme-color" content="#2f7d5b">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- מסך הזנת מפתח (מופיע פעם אחת בכל טלפון) -->
+  <section id="keyScreen" class="screen" hidden>
+    <h1>רשימת קניות</h1>
+    <p>הזינו את המפתח הסודי כדי להתחבר לרשימה.</p>
+    <form id="keyForm">
+      <input id="keyInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="מפתח סודי" dir="ltr" required>
+      <button type="submit">כניסה</button>
+    </form>
+    <p id="keyError" class="error" hidden></p>
+  </section>
+
+  <!-- המסך הראשי -->
+  <main id="mainScreen" hidden>
+    <header class="topbar">
+      <h1>רשימת קניות</h1>
+      <button id="catsBtn" class="icon-btn" aria-label="ניהול קטגוריות" title="ניהול קטגוריות">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>
+      </button>
+    </header>
+
+    <form id="addForm" class="add-form">
+      <input id="itemInput" type="text" placeholder="מה צריך לקנות?" autocomplete="off" enterkeyhint="done" required>
+      <div class="add-row">
+        <select id="catSelect" aria-label="קטגוריה"></select>
+        <button type="submit">הוספה</button>
+      </div>
+    </form>
+
+    <div id="list"></div>
+
+    <details id="boughtBox" class="bought">
+      <summary>נקנו <span id="boughtCount"></span></summary>
+      <ul id="boughtList"></ul>
+    </details>
+  </main>
+
+  <!-- ניהול קטגוריות -->
+  <dialog id="catsDialog">
+    <div class="dialog-head">
+      <h2>קטגוריות</h2>
+      <button id="catsClose" class="icon-btn" aria-label="סגירה">✕</button>
+    </div>
+    <ul id="catsList"></ul>
+    <form id="catAddForm" class="cat-add">
+      <input id="catInput" type="text" placeholder="קטגוריה חדשה" autocomplete="off" required>
+      <button type="submit">הוספה</button>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
